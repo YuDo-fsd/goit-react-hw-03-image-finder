@@ -1,15 +1,27 @@
-<header class="searchbar">
-  <form class="form">
-    <button type="submit" class="button">
-      <span class="button-label">Search</span>
-    </button>
+import React from 'react';
+import {
+  SearchBarHeader,
+  SearchForm,
+  SearchButton,
+  SearchButtonLabel,
+  SerchBarInput,
+} from './SearchBar.styled';
 
-    <input
-      class="input"
-      type="text"
-      autocomplete="off"
-      autofocus
-      placeholder="Search images and photos"
-    />
-  </form>
-</header>;
+export default function SearchBar() {
+  return (
+    <SearchBarHeader>
+      <SearchForm>
+        <SearchButton type="submit">
+          <SearchButtonLabel>Search</SearchButtonLabel>
+        </SearchButton>
+
+        <SerchBarInput
+          type="text"
+          autocomplete="off"
+          autofocus
+          placeholder="Search images and photos"
+        />
+      </SearchForm>
+    </SearchBarHeader>
+  );
+}
