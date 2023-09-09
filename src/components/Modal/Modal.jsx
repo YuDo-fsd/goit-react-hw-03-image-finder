@@ -1,4 +1,4 @@
-import * as basicLightbox from 'basiclightbox';
+// import * as basicLightbox from 'basiclightbox';
 import { Modal, Overlay } from './Modal.styled';
 
 // const instance = basicLightbox.create(`
@@ -9,7 +9,12 @@ export default function ModalWindow() {
   return (
     <Overlay class="overlay">
       <Modal class="modal">
-        <img src="../../../public/logo512.png" width="800" height="600"></img>
+        <img
+          src="../../../public/logo512.png"
+          width="800"
+          height="600"
+          alt="new"
+        ></img>
       </Modal>
     </Overlay>
   );
