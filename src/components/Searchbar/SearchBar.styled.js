@@ -34,7 +34,7 @@ export const SearchButton = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-image: url('https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/eye-monitoring-icon.svg');
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -49,8 +49,8 @@ export const SearchButton = styled.button`
 
 export const SearchButtonLabel = styled.span`
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 1px;
+  height: 1px;
   padding: 0;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
@@ -68,7 +68,7 @@ export const SerchBarInput = styled.input`
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
-  ::placeholder {
+  &::placeholder {
     font: inherit;
     font-size: 18px;
   }

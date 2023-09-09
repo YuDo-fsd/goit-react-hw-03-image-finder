@@ -1,10 +1,10 @@
 import React from 'react';
-import { GalleryImage } from './ImageGalleryItem.styled';
+import { GalleryImage, GalleryItem } from './ImageGalleryItem.styled';
 
-export default function ImageGalleryItem() {
+export default function ImageGalleryItem({ imageList }) {
   return (
-    <li class="gallery-item">
+    <GalleryItem class="gallery-item">
       <GalleryImage src="" alt="" />
-    </li>
+    </GalleryItem>
   );
 }
