@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import {
   SearchBarHeader,
   SearchForm,
@@ -7,21 +7,48 @@ import {
   SerchBarInput,
 } from './SearchBar.styled';
 
-export default function SearchBar() {
-  return (
-    <SearchBarHeader>
-      <SearchForm>
-        <SearchButton type="submit">
-          <SearchButtonLabel>Search</SearchButtonLabel>
-        </SearchButton>
+export class SearchBar extends Component() {
+  state = {
+    query: '',
+  };
 
-        <SerchBarInput
-          type="text"
-          autocomplete="off"
-          autofocus
-          placeholder="Search images and photos"
-        />
-      </SearchForm>
-    </SearchBarHeader>
-  );
+  handleSubmit = e => {
+    e.preventDefault();
+    const { query } = this.state;
+    if (!query) {
+      Notify.failure('Enter the request');
+      return;
+    }
+
+    this.props.onSubmit(query);
+  };
+
+  handleChange = el => {
+    this.setState({ query: el.currentTarget.value.trim() });
+  };
+
+  render() {
+    const { query } = this.state;
+    const { handleChange, handleSubmit } = this;
+
+    return (
+      <SearchBarHeader>
+        <SearchForm onSubmit={handleSubmit}>
+          <SearchButton type="submit">
+            <SearchButtonLabel>Search</SearchButtonLabel>
+          </SearchButton>
+
+          <SerchBarInput
+            type="text"
+            name="search"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            value={query}
+            onChange={handleChange}
+          />
+        </SearchForm>
+      </SearchBarHeader>
+    );
+  }
 }
