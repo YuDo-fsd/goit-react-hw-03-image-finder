@@ -1,21 +1,46 @@
 // import * as basicLightbox from 'basiclightbox';
-import { Modal, Overlay } from './Modal.styled';
+import { CloseBtn, ModalClass, Overlay } from './Modal.styled';
 
-// const instance = basicLightbox.create(`
+import { Component } from 'react';
+import { createPortal } from 'react-dom';
+import { IoCloseCircleSharp } from 'react-icons/io5';
 
-// `);
+const modalRoot = document.querySelector('#modal-root');
 
-export default function ModalWindow() {
-  return (
-    <Overlay class="overlay">
-      <Modal class="modal">
-        <img
-          src="../../../public/logo512.png"
-          width="800"
-          height="600"
-          alt="new"
-        ></img>
-      </Modal>
-    </Overlay>
-  );
+export class Modal extends Component {
+  componentDidMount = () => {
+    window.addEventListener('keydown', this.handleKeyDown);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      this.props.onClose();
+    }
+  };
+
+  handleBackdrop = e => {
+    if (e.target === e.currentTarget) {
+      this.props.onClose();
+    }
+  };
+
+  render() {
+    const { largeImageUrl, altName } = this.props.modalData;
+    return createPortal(
+      <Overlay onClick={this.handleBackdrop}>
+        <ModalClass>
+          <img src={largeImageUrl} alt={altName} />
+
+          <CloseBtn type="button" onClick={this.props.onClose}>
+            <IoCloseCircleSharp size={32} />
+          </CloseBtn>
+        </ModalClass>
+      </Overlay>,
+      modalRoot
+    );
+  }
 }

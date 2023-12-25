@@ -6,8 +6,9 @@ import {
   SearchButtonLabel,
   SerchBarInput,
 } from './SearchBar.styled';
+import { Notify } from 'notiflix';
 
-export class SearchBar extends Component() {
+export class SearchBar extends Component {
   state = {
     query: '',
   };
